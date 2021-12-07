@@ -4,7 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import { deleteMovie } from '../actions/movieActions';
-import { addFavorite,toggleFavorites } from '../actions/favoritesActions';
+import { addFavorite } from '../actions/favoritesActions';
 
 const Movie = (props) => {
     const { id } = useParams();
@@ -18,7 +18,6 @@ const Movie = (props) => {
         push('/movies');
     }
     const handleFavorite = (movie) => {
-        props.toggleFavorites();
         props.addFavorite(movie);
     }
     
@@ -68,4 +67,4 @@ const mapStateToProps =  state => {
         displayFavorites:state.favorite.displayFavorites
     })
 }
-export default connect(mapStateToProps,{deleteMovie,toggleFavorites,addFavorite})(Movie);
+export default connect(mapStateToProps,{deleteMovie,addFavorite})(Movie);
